@@ -79,12 +79,12 @@ void print_customers_order(const customer_data &customer, double total, double d
 {
     string rank = get_customer_rank_as_string(customer);
     write_line();
-    write_line("Your total order comes to: " + convert_to_string(total));
+    write_line("Your total order comes to: $" + convert_to_string(total));
 
     if (customer.rank != NONE)
     {
          write_line("Wait you get a discount!");
-        write_line("As a " + rank + " your order comes to : " + convert_to_string(discounted_total));
+        write_line("As a " + rank + " your order comes to : $" + convert_to_string(discounted_total));
     }
     write_line();
 }
