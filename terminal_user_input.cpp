@@ -105,4 +105,13 @@ bool read_boolean(string prompt)
 
 }
 
+
+
+string convert_to_string(double val)
+{
+    string str = to_string(val);
+    int dp = str.find(".");
+    return str.substr(0, dp + 3);
+}
+
  #endif

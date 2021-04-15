@@ -76,3 +76,10 @@ bool read_boolean(string prompt);
  * 
  */ 
 int read_integer_with_length(string prompt, int length);
+
+/**
+ * --TO DO--
+ * Enter information here
+ * 
+ */ 
+string convert_to_string(double val);
