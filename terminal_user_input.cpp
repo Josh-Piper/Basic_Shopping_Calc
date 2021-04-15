@@ -22,7 +22,7 @@ int read_integer(string prompt)
         if ( not is_integer (result) ) write_line("[INFO] Please enter a whole number");
     } while ( not is_integer (result) );
 
-    return convert_to_integer(result);
+    return stoll(result);
 }
 
 int read_integer (string prompt, int min, int max) 
@@ -70,7 +70,7 @@ int read_integer_with_length(string prompt, int length)
     do
     {
         result = read_integer(prompt);
-        size_of_string = to_string(result).length() + 1;
+        size_of_string = to_string(result).length();
         if ( size_of_string != length ) write_line("The amount of digits must be " + to_string(length));
     } while ( size_of_string != length );
 

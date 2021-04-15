@@ -55,9 +55,9 @@ string get_customer_rank_as_string(const customer_data &customer)
         case DIAMOND: result = "Diamond"; break;
         case GOLD: result = "Gold"; break;
         case SILVER: result = "Silver"; break;
-        default: break;
+        default: result = "Member"; break;
     }
-    result += " Member";
+    if (customer.rank != NONE) result += " Member";
     return result;
 }
 
