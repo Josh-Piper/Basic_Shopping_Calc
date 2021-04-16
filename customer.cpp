@@ -9,12 +9,16 @@
 using std::to_string;
 
 customer_data create_customer()
-{
+{   
+    static const int MINIMUM_AGE = 5;
+    static const int MAXIMUM_AGE = 100;
+    static const int MAX_PHONE_NUMBER_DIGITS = 10;
+
     customer_data result;
     result.rank = NONE;
     result.username = read_string("Please enter your name: ");
-    result.age = read_integer("Please enter your age: ", 5, 100);
-    result.mobile_number = read_integer_with_length("Please enter your phone number: ", 10);
+    result.age = read_integer("Please enter your age: ", MINIMUM_AGE, MAXIMUM_AGE);
+    result.mobile_number = read_integer_with_length("Please enter your phone number: ", MAX_PHONE_NUMBER_DIGITS);
     return result;
 }
 
@@ -33,10 +37,13 @@ void print_customer_rank_message(const customer_data &customer)
 
 void check_customer_rank(customer_data &customer, double total)
 {
-    if (total >= 30) 
+    static const int TOTAL_NEEDED_FOR_DIAMOND_RANK = 30;
+    static const int TOTAL_NEEDED_FOR_GOLD_RANK = 10;
+    
+    if (total >= TOTAL_NEEDED_FOR_DIAMOND_RANK) 
     {
         customer.rank = DIAMOND;
-    } else if (total >= 10)
+    } else if (total >= TOTAL_NEEDED_FOR_GOLD_RANK)
     {
         customer.rank = GOLD;
     } else
@@ -91,12 +98,16 @@ void print_customers_order(const customer_data &customer, double total, double d
 
 double calculate_discount_total(const customer_data &customer ,double total)
 {
+    static const double DIAMOND_DISCOUNT = 0.85;
+    static const double GOLD_DISCOUNT = 0.90;
+    static const double SILVER_DISCOUNT = 0.95;
+
     double result;
     switch (customer.rank)
     {
-        case DIAMOND: result = total * 0.85; break;
-        case GOLD: result = total * 0.90; break;
-        case SILVER: result = total * 0.95; break;
+        case DIAMOND: result = total * DIAMOND_DISCOUNT; break;
+        case GOLD: result = total * GOLD_DISCOUNT; break;
+        case SILVER: result = total * SILVER_DISCOUNT; break;
         default: break;
     }
     return result;

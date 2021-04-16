@@ -22,7 +22,7 @@ int read_integer(string prompt)
         if ( not is_integer (result) ) write_line("[INFO] Please enter a whole number");
     } while ( not is_integer (result) );
 
-    return stoll(result);
+    return convert_to_integer(result);
 }
 
 int read_integer (string prompt, int min, int max) 
