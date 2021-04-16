@@ -45,7 +45,7 @@ long int read_long_integer(string prompt)
         if ( not is_integer (result) ) write_line("[INFO] Please enter a whole number");
     } while ( not is_integer (result) );
 
-    return convert_to_integer(result);
+    return std::stoll(result);
 }
 
 double read_double(string prompt) 
@@ -73,19 +73,17 @@ double read_double_range(string prompt, double min, double max)
     return result;
 }
 
-int read_integer_with_length(string prompt, int length)
+long int read_integer_with_length(string prompt, int length)
 {
-    int result;
-    int size_of_string;
+    string result;
 
     do
     {
-        result = read_long_integer(prompt);
-        size_of_string = to_string(result).length();
-        if ( size_of_string != length ) write_line("The amount of digits must be " + to_string(length));
-    } while ( size_of_string != length );
+        result = read_string(prompt);
+        if ( result.length() != length ) write_line("The amount of digits must be " + to_string(length));
+    } while ( result.length() != length || !is_number(result) );
 
-    return result;
+    return std::stoll(result);
 }
 
 bool read_boolean(string prompt) 

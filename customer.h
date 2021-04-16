@@ -20,7 +20,7 @@ struct customer_data
 {
     string                  username;
     int                     age;
-    int                     mobile_number;
+    long int                mobile_number;
     customer_rank_type      rank;
 };
 
