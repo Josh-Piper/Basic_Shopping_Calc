@@ -23,6 +23,8 @@ string read_string ( string prompt );
  */ 
 int read_integer ( string prompt );
 
+long int read_long_integer(string prompt);
+
 /**
  * Prompts the user for input and reads the text that the user enters
  * at the Terminal. This will read in a line of text and return this

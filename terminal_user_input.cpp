@@ -14,7 +14,6 @@ string read_string(string prompt)
 
 int read_integer(string prompt) 
 {
-
     string result;
     do
     {
@@ -35,6 +34,18 @@ int read_integer (string prompt, int min, int max)
     }
 
     return result;
+}
+
+long int read_long_integer(string prompt)
+{
+    string result;
+    do
+    {
+        result = read_string(prompt);
+        if ( not is_integer (result) ) write_line("[INFO] Please enter a whole number");
+    } while ( not is_integer (result) );
+
+    return convert_to_integer(result);
 }
 
 double read_double(string prompt) 
@@ -69,7 +80,7 @@ int read_integer_with_length(string prompt, int length)
 
     do
     {
-        result = read_integer(prompt);
+        result = read_long_integer(prompt);
         size_of_string = to_string(result).length();
         if ( size_of_string != length ) write_line("The amount of digits must be " + to_string(length));
     } while ( size_of_string != length );
@@ -104,8 +115,6 @@ bool read_boolean(string prompt)
     return result;
 
 }
-
-
 
 string convert_to_string(double val)
 {
